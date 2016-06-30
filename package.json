@@ -1,0 +1,28 @@
+{
+  "name": "manageruser",
+  "version": "0.0.0",
+  "description": "manager user",
+  "main": "config.js",
+  "dependencies": {
+    "body-parser": "~1.15.2",
+    "express": "~4.14.0",
+    "mongoose": "~4.5.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "no command",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ThePhan/Nodejs.git"
+  },
+  "keywords": [
+    "nodejs"
+  ],
+  "author": "Chris Phan",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/ThePhan/Nodejs/issues"
+  }
+}
