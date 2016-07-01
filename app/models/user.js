@@ -13,15 +13,15 @@ var Schema = mongoose.Schema;
   		})
 
   	},
-  	
+
   	addUser:function(req, res){
   		var user = new User(req.body);
   		user._id = new Date().getTime();
-  		user.save(function(err){
+  		user.save(function(err, data){
   			if (err) {
   				res.status(304).json({'message': 'err'});
   			}
-  			res.status(200).json({'message':'user was created'});
+  			res.status(200).json(data);
   		});
 
   	},
@@ -35,17 +35,17 @@ var Schema = mongoose.Schema;
   			else{
   				data.firstName=req.body.firstName;
   				data.lastName=req.body.lastName;
-  				data.photo=req.body.phto;
-  				data.save(function(err){
+  				data.photo=req.body.photo;
+  				data.save(function(err, newvalue){
   					if (err) {
   						res.status(304).json({'message': 'Update user faild'});
   					}
-  					res.status(200).json(data);
+  					res.status(200).json(newvalue);
   				});
   			}
   		});
 
-  	}, 
+  	},
   	deleteUser:function(req, res){
   		var idUser = req.body.idUser;
   		User.findById(idUser, function(err, user){
