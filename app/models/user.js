@@ -27,7 +27,7 @@ var Schema = mongoose.Schema;
   	},
 
   	editUser:function(req, res){
-  		var idUser = req.body.idUser;
+  		var idUser = req.body._id;
   		User.findById(idUser, function(err, data){
   			if (!data) {
   				res.status(404).json({'Warning': 'User not exit'});
@@ -40,14 +40,14 @@ var Schema = mongoose.Schema;
   					if (err) {
   						res.status(304).json({'message': 'Update user faild'});
   					}
-  					res.status(200).json(newvalue);
+  					res.status(200).json({'message': 'Update sucess'});
   				});
   			}
   		});
 
   	},
   	deleteUser:function(req, res){
-  		var idUser = req.body.idUser;
+  		var idUser = req.body._id;
   		User.findById(idUser, function(err, user){
   			if (!user) {
   				res.status(404).json({'Warning':'Noone was found'});
