@@ -1,4 +1,5 @@
 var user = require('./app/models/user');
+var friend = require('./app/models/friend');
 
 module.exports.initialize = function(app, router){
   router.use(function(req, res, next){
@@ -14,8 +15,15 @@ module.exports.initialize = function(app, router){
     }
   });
   router.get('/user', user.listUser);
+
   router.post('/user', user.addUser);
+  router.post('/friend',friend.addFriend);
+
   router.put('/user', user.editUser);
+
   router.delete('/user', user.deleteUser);
+  router.delete('/friend', friend.deleteFriend);
+
+  // app.disable('x-powered-by');
   app.use('/', router);
 }
