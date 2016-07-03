@@ -8,6 +8,7 @@ module.exports = {
     find user have exit? if oke, insert id of other user into friends of this user
     */
     addFriend: function(req, res) {
+      console.log(req);
         var idUser = req.body._id;
         User.find({
             "_id": idUser
@@ -36,7 +37,6 @@ module.exports = {
     },
     deleteFriend: function(req, res) {
         var idUser = req.body._id;
-        console.log(req);
         User.find({
             "_id": idUser
         }, function(err, user) {
@@ -48,7 +48,7 @@ module.exports = {
                 var users = user[0];
                 var friend = users.friends;
                 var idFriend = req.body.idFriend;
-                // console.log(idFriend + "dddddd");
+                // console.log(idFriend + "")
                 var newArr = [];
                 var i=0;
                 for (j = 0; j < friend.length; j++) {

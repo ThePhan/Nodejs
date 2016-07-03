@@ -1,4 +1,4 @@
-owvar user = require('./app/models/user');
+var user = require('./app/models/user');
 var friend = require('./app/models/friend');
 
 module.exports.initialize = function(app, router){
