@@ -53,13 +53,27 @@ var Schema = mongoose.Schema;
   				res.status(404).json({'message':'Noone was found'});
   			}
   			else{
-  				user.remove(function(err, data){
-  					if (err) {
-  						res.status(304).json({'message':'Delete user faild'});
-  					}
-  					res.status(200).json({'message':'Sucess'});
-  				});
+
+  				// user.remove(function(err, data){
+  				// 	if (err) {
+  				// 		res.status(304).json({'message':'Delete user faild'});
+  				// 	}
+  				// 	res.status(200).json({'message':'Sucess'});
+  				// });
   			}
   		});
   	}
+  }
+
+  deleteUserFriend = function(idUser){
+    User.find({}'friends': idUser}, function(err, arr){
+      console.log(arr);
+      if (arr.length <= 0) {
+        return 0;
+      }else {
+        for(var i=0; i<arr.length; i++){
+          
+        }
+      }
+    });
   }
