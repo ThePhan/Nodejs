@@ -14,6 +14,11 @@ module.exports.initialize = function(app, router){
       next();
     }
   });
+  app.get('/', function(req, res){
+    req.on('close', function(){
+        console.log('Client closed the connection');
+    });
+});
   router.get('/user', user.listUser);
 
   router.post('/user', user.addUser);

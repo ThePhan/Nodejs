@@ -15,7 +15,7 @@ module.exports = {
         }, function(err, user) {
             if (user.length <= 0) {
                 res.status(404).json({
-                    'Warnning': 'User not exit'
+                    'message': 'User not exit'
                 });
             } else {
                 var friend = user[0];
@@ -24,7 +24,7 @@ module.exports = {
                 friend.save(function(err) {
                     if (err) {
                         res.status(304).json({
-                            'Warnning': 'Save faid'
+                            'message': 'Save faid'
                         });
                     }
                     res.status(200).json({
@@ -42,7 +42,7 @@ module.exports = {
         }, function(err, user) {
             if (user.length <= 0) {
                 res.status(404).json({
-                    'Warnning': 'No user was found'
+                    'message': 'No user was found'
                 });
             } else {
                 var users = user[0];

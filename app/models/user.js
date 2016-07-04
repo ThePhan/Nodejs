@@ -7,7 +7,7 @@ var Schema = mongoose.Schema;
   	listUser:function(req, res){
   		User.find(function(err, data){
   			if (err) {
-  				res.status(404).json({'Warning': 'no data was found'});
+  				res.status(404).json({'message': 'no data was found'});
   			}
   			res.status(200).json(data);
   		})
@@ -21,7 +21,7 @@ var Schema = mongoose.Schema;
   			if (err) {
   				res.status(304).json({'message': 'err'});
   			}
-  			res.status(200).json(data);
+  			res.status(200).json({'message': 'Sucess'});
   		});
 
   	},
@@ -30,13 +30,13 @@ var Schema = mongoose.Schema;
   		var idUser = req.body._id;
   		User.findById(idUser, function(err, data){
   			if (!data) {
-  				res.status(404).json({'Warning': 'User not exit'});
+  				res.status(404).json({'message': 'User not exit'});
   			}
   			else{
   				data.firstName=req.body.firstName;
   				data.lastName=req.body.lastName;
   				data.photo=req.body.photo;
-  				data.save(function(err, newvalue){
+  				data.save(function(err){
   					if (err) {
   						res.status(304).json({'message': 'Update user faild'});
   					}
@@ -50,12 +50,12 @@ var Schema = mongoose.Schema;
   		var idUser = req.body._id;
   		User.findById(idUser, function(err, user){
   			if (!user) {
-  				res.status(404).json({'Warning':'Noone was found'});
+  				res.status(404).json({'message':'Noone was found'});
   			}
   			else{
-  				user.remove(function(err){
+  				user.remove(function(err, data){
   					if (err) {
-  						res.status(304).json({'Warning':'Delete user faild'});
+  						res.status(304).json({'message':'Delete user faild'});
   					}
   					res.status(200).json({'message':'Sucess'});
   				});
