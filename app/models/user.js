@@ -15,8 +15,17 @@ var Schema = mongoose.Schema;
   	},
 
   	addUser:function(req, res){
+      var idUser='';
+      for(i=0; i<8; i++){
+        var x=Math.floor(Math.random()*36);
+        if(x>9){
+          x=String.fromCharCode(x-10 + 'A'.charCodeAt(0));
+        }
+        idUser+=x;
+      }
   		var user = new User(req.body);
-  		user._id = new Date().getTime();
+  		// user._id = new Date().getTime();
+      user._id=idUser;
   		user.save(function(err, data){
   			if (err) {
   				res.status(304).json({'message': 'err'});
@@ -54,26 +63,26 @@ var Schema = mongoose.Schema;
   			}
   			else{
 
-  				// user.remove(function(err, data){
-  				// 	if (err) {
-  				// 		res.status(304).json({'message':'Delete user faild'});
-  				// 	}
-  				// 	res.status(200).json({'message':'Sucess'});
-  				// });
+  				user.remove(function(err, data){
+  					if (err) {
+  						res.status(304).json({'message':'Delete user faild'});
+  					}
+  					res.status(200).json({'message':'Sucess'});
+  				});
   			}
   		});
   	}
   }
 
-  deleteUserFriend = function(idUser){
-    User.find({}'friends': idUser}, function(err, arr){
-      console.log(arr);
-      if (arr.length <= 0) {
-        return 0;
-      }else {
-        for(var i=0; i<arr.length; i++){
-          
-        }
-      }
-    });
-  }
+  // deleteUserFriend = function(idUser){
+  //   User.find({}'friends': idUser}, function(err, arr){
+  //     console.log(arr);
+  //     if (arr.length <= 0) {
+  //       return 0;
+  //     }else {
+  //       for(var i=0; i<arr.length; i++){
+  //
+  //       }
+  //     }
+  //   });
+  // }
